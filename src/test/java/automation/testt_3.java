@@ -1,0 +1,35 @@
+package automation;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class testt_3 {
+
+	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://www.netflix.com/in/Login");
+        driver.manage().window().maximize();
+        
+        Actions act=new Actions(driver);
+
+        WebElement txt_email=driver.findElement(By.xpath("//input[@name='userLoginId']"));
+        act.keyDown(txt_email, Keys.SHIFT).sendKeys("Gajanan18").keyUp(Keys.SHIFT).build().perform();
+        
+        act.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+        
+        act.keyDown(Keys.CONTROL).sendKeys("c").keyUp(Keys.CONTROL).build().perform();
+        WebElement txt_password=driver.findElement(By.xpath("//input[@id='id_password']"));
+        txt_password.click();
+        
+        act.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).build().perform();
+        txt_password.sendKeys(Keys.ENTER);
+	}
+
+}
